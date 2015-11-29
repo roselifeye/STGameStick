@@ -10,7 +10,10 @@
 
 #define RatioOfCenterAndBG 68/128
 
+#define MoveBtnR 15
+
 @interface STGameStick () {
+    UIImageView *moveBtn;
     UIImageView *stickBG;
     UIImageView *stickCenter;
     
@@ -33,7 +36,7 @@
 }
 
 - (void)initMoveBtn {
-    UIImageView *moveBtn = [[UIImageView alloc] initWithFrame:CGRectMake(minSizeWidth, minSizeWidth, 20, 20)];
+    moveBtn = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width-MoveBtnR*2, self.frame.size.height-MoveBtnR*2, MoveBtnR*2, MoveBtnR*2)];
     [moveBtn setImage:[UIImage imageNamed:@"close"]];
     UILongPressGestureRecognizer *longPressGes = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(moveStickView:)];
     longPressGes.minimumPressDuration = 2.f;
@@ -41,17 +44,29 @@
     [moveBtn addGestureRecognizer:longPressGes];
     moveBtn.userInteractionEnabled = YES;
     
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveStickView:)];
+//    [self addGestureRecognizer:panGesture];
+    
+    
     [self addSubview:moveBtn];
 }
 
+/**
+ *  Long press the Move Button,
+ *  and will call the move function.
+ *
+ *  @param sender Long press gesture.
+ */
 - (void)moveStickView:(UILongPressGestureRecognizer *)sender {
-    if (sender.state == UIGestureRecognizerStateBegan) {
-        NSLog(@"Stick View Moved.");
-    }
+    CGPoint point = [sender locationInView:self];
+    NSLog(@"%f",point.x);
+//    sender.view.center = CGPointMake(sender.view.center.x + point.x, sender.view.center.y + point.y);
+//    [sender setTranslation:CGPointMake(0, 0) inView:self];
+    [self setCenter:point];
 }
 
 - (void)initStickController {
-    minSizeWidth = (self.frame.size.width>self.frame.size.height)?self.frame.size.width-20:self.frame.size.height-20;
+    minSizeWidth = (self.frame.size.width>self.frame.size.height)?self.frame.size.width-MoveBtnR:self.frame.size.height-MoveBtnR;
     sCenter = CGPointMake(minSizeWidth/2, minSizeWidth/2);
     
     stickCenter = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, minSizeWidth, minSizeWidth)];
@@ -67,8 +82,6 @@
 
 
 - (void)stickTouched:(NSSet<UITouch *> *)touches {
-    if([touches count] != 1)
-        return ;
 
     UITouch *touch = [touches anyObject];
     UIView *view = [touch view];
@@ -76,46 +89,36 @@
     if(view != self)
         return ;
 
+    self.userInteractionEnabled = NO;
     CGPoint touchPoint = [touch locationInView:view];
-    CGPoint disOffset, disToCenter, maxCenter;
+    CGPoint disOffset, disToCenter, maxOffset, maxCenter;
     
-    // calculate stick direction to the center
-    maxCenter.x = disToCenter.x = disOffset.x = touchPoint.x - sCenter.x;
-    maxCenter.y = disToCenter.y = disOffset.y =  touchPoint.y - sCenter.y;
+    maxCenter.x = maxOffset.x = disToCenter.x = disOffset.x = touchPoint.x - sCenter.x;
+    maxCenter.y = maxOffset.y = disToCenter.y = disOffset.y = touchPoint.y - sCenter.y;
 
     double len = sqrt(disToCenter.x*disToCenter.x + disToCenter.y*disToCenter.y);
     float largestOffset = minSizeWidth/2-(minSizeWidth/2)*RatioOfCenterAndBG;
-//    NSLog(@"%f, %f",len, largestOffset);
-//    NSLog(@"%f, %f",stickCenter.frame.origin.x, stickCenter.frame.origin.y);
-//    disToCenter.x = (disToCenter.x<largestOffset)?((disToCenter.x<-largestOffset)?-largestOffset:disToCenter.x):largestOffset;
-//    disToCenter.y = (disToCenter.y<largestOffset)?((disToCenter.y<-largestOffset)?-largestOffset:disToCenter.y):largestOffset;
-//    disToCenter.x = (len<largestOffset)?((disToCenter.x<-largestOffset)?-largestOffset:disToCenter.x):largestOffset;
-//    disToCenter.y = (len<largestOffset)?((disToCenter.y<-largestOffset)?-largestOffset:disToCenter.y):largestOffset;
 
-    if(len < 1.0 && len > -1.0) {
-        // on center pos
-        disOffset.x = 0.0;
-        disOffset.y = 0.0;
-        disToCenter.x = 0;
-        disToCenter.y = 0;
+    if(len < 0.1 && len > -0.10) {
+        //  If the |len| is smaller than 1, the stick is considered not moved.
+        maxCenter.x = maxOffset.x = disToCenter.x = disOffset.x = 0.f;
+        maxCenter.y = maxOffset.y = disToCenter.y = disOffset.y = 0.f;
     } else {
+        //  Calculate the Max Offset and Center.
+        //  Normalize the distance.
         double len_inv = (1.0 / len);
-        disOffset.x *= len_inv;
-        disOffset.y *= len_inv;
-        disToCenter.x = disOffset.x * 20;
-        disToCenter.y = disOffset.y * 20;
-        NSLog(@"%f,%f",disOffset.x,disOffset.y);
+        maxOffset.x *= len_inv;
+        maxOffset.y *= len_inv;
+        maxCenter.x = maxOffset.x * largestOffset;
+        maxCenter.y = maxOffset.y * largestOffset;
+        //  Obtain the real Center, and limite it with maxCenter.
+        disToCenter.x = (len>largestOffset)?maxCenter.x:disToCenter.x;
+        disToCenter.y = (len>largestOffset)?maxCenter.y:disToCenter.y;
+        //  Nomarlize X and Y, and rerange the direction.
+        disOffset.x = (disToCenter.x)/largestOffset;
+        disOffset.y = -(disToCenter.y)/largestOffset;
     }
     
-//    NSLog(@"%f,%f",disToCenter.x,disToCenter.y);
-//    if (len > minSizeWidth/2) {
-//        
-//    } else {
-//        disOffset.x = disToCenter.x/largestOffset;
-//        disOffset.y = disToCenter.y/largestOffset;
-////        NSLog(@"%f,%f",disOffset.x,disOffset.y);
-//    }
-//    [self stickMoved:CGPointMake(disToCenter.x+sCenter.x, disToCenter.y+sCenter.y)];
     [self stickMoved:disToCenter];
     
     if ([self.delegate respondsToSelector:@selector(stickDidMoved:withMovedCoodinate:)]) {
@@ -123,8 +126,12 @@
     }
 }
 
+/**
+ *  The stick will move to the coordinate
+ *
+ *  @param offSetToCenter The distance to the Center of the ImageView.
+ */
 - (void)stickMoved:(CGPoint)offSetToCenter {
-//    [stickCenter setCenter:offSetToCenter];
     CGRect fr = stickCenter.frame;
     fr.origin.x = offSetToCenter.x;
     fr.origin.y = offSetToCenter.y;
@@ -132,14 +139,17 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"1");
     [self stickTouched:touches];
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"2");
     [self stickTouched:touches];
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"3");
     [self stickMoved:CGPointMake(0, 0)];
 }
 
