@@ -77,41 +77,46 @@
         return ;
 
     CGPoint touchPoint = [touch locationInView:view];
-    CGPoint disOffset, disToCenter;
+    CGPoint disOffset, disToCenter, maxCenter;
     
     // calculate stick direction to the center
-    disToCenter.x = touchPoint.x - sCenter.x;
-    disToCenter.y = touchPoint.y - sCenter.y;
+    maxCenter.x = disToCenter.x = disOffset.x = touchPoint.x - sCenter.x;
+    maxCenter.y = disToCenter.y = disOffset.y =  touchPoint.y - sCenter.y;
 
     double len = sqrt(disToCenter.x*disToCenter.x + disToCenter.y*disToCenter.y);
     float largestOffset = minSizeWidth/2-(minSizeWidth/2)*RatioOfCenterAndBG;
-    NSLog(@"%f, %f",len, largestOffset);
-    disToCenter.x = (disToCenter.x<largestOffset)?((disToCenter.x<-largestOffset)?-largestOffset:disToCenter.x):largestOffset;
-    disToCenter.y = (disToCenter.y<largestOffset)?((disToCenter.y<-largestOffset)?-largestOffset:disToCenter.y):largestOffset;
-//    NSLog(@"%f",len);
-//    if(len < 10.0 && len > -10.0) {
-//        // on center pos
-//        disOffset.x = 0.0;
-//        disOffset.y = 0.0;
-//        disToCenter.x = 0;
-//        disToCenter.y = 0;
-//    } else {
-//        double len_inv = (1.0 / len);
-//        disToCenter.x = len_inv;
-//        disToCenter.y = len_inv;
-//        disOffset.x = disToCenter.x * STICK_CENTER_TARGET_POS_LEN;
-//        disOffset.y = disToCenter.y * STICK_CENTER_TARGET_POS_LEN;
-//    }
+//    NSLog(@"%f, %f",len, largestOffset);
+//    NSLog(@"%f, %f",stickCenter.frame.origin.x, stickCenter.frame.origin.y);
+//    disToCenter.x = (disToCenter.x<largestOffset)?((disToCenter.x<-largestOffset)?-largestOffset:disToCenter.x):largestOffset;
+//    disToCenter.y = (disToCenter.y<largestOffset)?((disToCenter.y<-largestOffset)?-largestOffset:disToCenter.y):largestOffset;
+//    disToCenter.x = (len<largestOffset)?((disToCenter.x<-largestOffset)?-largestOffset:disToCenter.x):largestOffset;
+//    disToCenter.y = (len<largestOffset)?((disToCenter.y<-largestOffset)?-largestOffset:disToCenter.y):largestOffset;
+
+    if(len < 1.0 && len > -1.0) {
+        // on center pos
+        disOffset.x = 0.0;
+        disOffset.y = 0.0;
+        disToCenter.x = 0;
+        disToCenter.y = 0;
+    } else {
+        double len_inv = (1.0 / len);
+        disOffset.x *= len_inv;
+        disOffset.y *= len_inv;
+        disToCenter.x = disOffset.x * 20;
+        disToCenter.y = disOffset.y * 20;
+        NSLog(@"%f,%f",disOffset.x,disOffset.y);
+    }
     
 //    NSLog(@"%f,%f",disToCenter.x,disToCenter.y);
-    if (len > minSizeWidth/2) {
-        
-    } else {
-        disOffset.x = disToCenter.x/largestOffset;
-        disOffset.y = disToCenter.y/largestOffset;
-//        NSLog(@"%f,%f",disOffset.x,disOffset.y);
-    }
-    [self stickMoved:CGPointMake(disToCenter.x+sCenter.x, disToCenter.y+sCenter.y)];
+//    if (len > minSizeWidth/2) {
+//        
+//    } else {
+//        disOffset.x = disToCenter.x/largestOffset;
+//        disOffset.y = disToCenter.y/largestOffset;
+////        NSLog(@"%f,%f",disOffset.x,disOffset.y);
+//    }
+//    [self stickMoved:CGPointMake(disToCenter.x+sCenter.x, disToCenter.y+sCenter.y)];
+    [self stickMoved:disToCenter];
     
     if ([self.delegate respondsToSelector:@selector(stickDidMoved:withMovedCoodinate:)]) {
         [self.delegate stickDidMoved:self withMovedCoodinate:disOffset];
@@ -119,7 +124,11 @@
 }
 
 - (void)stickMoved:(CGPoint)offSetToCenter {
-    [stickCenter setCenter:offSetToCenter];
+//    [stickCenter setCenter:offSetToCenter];
+    CGRect fr = stickCenter.frame;
+    fr.origin.x = offSetToCenter.x;
+    fr.origin.y = offSetToCenter.y;
+    stickCenter.frame = fr;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -131,7 +140,7 @@
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self stickMoved:sCenter];
+    [self stickMoved:CGPointMake(0, 0)];
 }
 
 
