@@ -1,0 +1,313 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8B2E97281C0B47900072328D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2E97271C0B47900072328D /* main.m */; };
+		8B2E972B1C0B47900072328D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2E972A1C0B47900072328D /* AppDelegate.m */; };
+		8B2E972E1C0B47900072328D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2E972D1C0B47900072328D /* ViewController.m */; };
+		8B2E97311C0B47900072328D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B2E972F1C0B47900072328D /* Main.storyboard */; };
+		8B2E97331C0B47900072328D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B2E97321C0B47900072328D /* Assets.xcassets */; };
+		8B2E97361C0B47900072328D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B2E97341C0B47900072328D /* LaunchScreen.storyboard */; };
+		8B2E973F1C0B47CF0072328D /* STGameStick.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2E973E1C0B47CF0072328D /* STGameStick.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8B2E97231C0B47900072328D /* STGameStick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STGameStick.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B2E97271C0B47900072328D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8B2E97291C0B47900072328D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8B2E972A1C0B47900072328D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8B2E972C1C0B47900072328D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8B2E972D1C0B47900072328D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8B2E97301C0B47900072328D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8B2E97321C0B47900072328D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8B2E97351C0B47900072328D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8B2E97371C0B47900072328D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B2E973D1C0B47CF0072328D /* STGameStick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STGameStick.h; path = STGameStick/STGameStick.h; sourceTree = "<group>"; };
+		8B2E973E1C0B47CF0072328D /* STGameStick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STGameStick.m; path = STGameStick/STGameStick.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8B2E97201C0B47900072328D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8B2E971A1C0B47900072328D = {
+			isa = PBXGroup;
+			children = (
+				8B2E97251C0B47900072328D /* STGameStick */,
+				8B2E97241C0B47900072328D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8B2E97241C0B47900072328D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8B2E97231C0B47900072328D /* STGameStick.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8B2E97251C0B47900072328D /* STGameStick */ = {
+			isa = PBXGroup;
+			children = (
+				8B2E97291C0B47900072328D /* AppDelegate.h */,
+				8B2E972A1C0B47900072328D /* AppDelegate.m */,
+				8B2E973D1C0B47CF0072328D /* STGameStick.h */,
+				8B2E973E1C0B47CF0072328D /* STGameStick.m */,
+				8B2E972C1C0B47900072328D /* ViewController.h */,
+				8B2E972D1C0B47900072328D /* ViewController.m */,
+				8B2E972F1C0B47900072328D /* Main.storyboard */,
+				8B2E97321C0B47900072328D /* Assets.xcassets */,
+				8B2E97341C0B47900072328D /* LaunchScreen.storyboard */,
+				8B2E97371C0B47900072328D /* Info.plist */,
+				8B2E97261C0B47900072328D /* Supporting Files */,
+			);
+			path = STGameStick;
+			sourceTree = "<group>";
+		};
+		8B2E97261C0B47900072328D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8B2E97271C0B47900072328D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8B2E97221C0B47900072328D /* STGameStick */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B2E973A1C0B47900072328D /* Build configuration list for PBXNativeTarget "STGameStick" */;
+			buildPhases = (
+				8B2E971F1C0B47900072328D /* Sources */,
+				8B2E97201C0B47900072328D /* Frameworks */,
+				8B2E97211C0B47900072328D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = STGameStick;
+			productName = STGameStick;
+			productReference = 8B2E97231C0B47900072328D /* STGameStick.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8B2E971B1C0B47900072328D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = Sentto;
+				TargetAttributes = {
+					8B2E97221C0B47900072328D = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 8B2E971E1C0B47900072328D /* Build configuration list for PBXProject "STGameStick" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8B2E971A1C0B47900072328D;
+			productRefGroup = 8B2E97241C0B47900072328D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8B2E97221C0B47900072328D /* STGameStick */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8B2E97211C0B47900072328D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B2E97361C0B47900072328D /* LaunchScreen.storyboard in Resources */,
+				8B2E97331C0B47900072328D /* Assets.xcassets in Resources */,
+				8B2E97311C0B47900072328D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8B2E971F1C0B47900072328D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B2E972E1C0B47900072328D /* ViewController.m in Sources */,
+				8B2E972B1C0B47900072328D /* AppDelegate.m in Sources */,
+				8B2E97281C0B47900072328D /* main.m in Sources */,
+				8B2E973F1C0B47CF0072328D /* STGameStick.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8B2E972F1C0B47900072328D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8B2E97301C0B47900072328D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8B2E97341C0B47900072328D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8B2E97351C0B47900072328D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8B2E97381C0B47900072328D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		8B2E97391C0B47900072328D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8B2E973B1C0B47900072328D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = STGameStick/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.roselifeye.STGameStick;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8B2E973C1C0B47900072328D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = STGameStick/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.roselifeye.STGameStick;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8B2E971E1C0B47900072328D /* Build configuration list for PBXProject "STGameStick" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B2E97381C0B47900072328D /* Debug */,
+				8B2E97391C0B47900072328D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B2E973A1C0B47900072328D /* Build configuration list for PBXNativeTarget "STGameStick" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B2E973B1C0B47900072328D /* Debug */,
+				8B2E973C1C0B47900072328D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8B2E971B1C0B47900072328D /* Project object */;
+}
