@@ -13,7 +13,6 @@
 #define MoveBtnR 15
 
 @interface STGameStick () {
-    UIImageView *moveBtn;
     UIImageView *stickBG;
     UIImageView *stickCenter;
     
@@ -30,50 +29,19 @@
     self = [super initWithFrame:frame];
     if (self != nil) {
         [self initStickController];
-        [self initMoveBtn];
+        self.tag = 9999;
     }
     return self;
 }
 
-- (void)initMoveBtn {
-    moveBtn = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width-MoveBtnR*2, self.frame.size.height-MoveBtnR*2, MoveBtnR*2, MoveBtnR*2)];
-    [moveBtn setImage:[UIImage imageNamed:@"close"]];
-    UILongPressGestureRecognizer *longPressGes = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(moveStickView:)];
-    longPressGes.minimumPressDuration = 2.f;
-    longPressGes.numberOfTouchesRequired = 1;
-    [moveBtn addGestureRecognizer:longPressGes];
-    moveBtn.userInteractionEnabled = YES;
-    
-    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveStickView:)];
-//    [self addGestureRecognizer:panGesture];
-    
-    
-    [self addSubview:moveBtn];
-}
-
-/**
- *  Long press the Move Button,
- *  and will call the move function.
- *
- *  @param sender Long press gesture.
- */
-- (void)moveStickView:(UILongPressGestureRecognizer *)sender {
-    CGPoint point = [sender locationInView:self];
-    NSLog(@"%f",point.x);
-//    sender.view.center = CGPointMake(sender.view.center.x + point.x, sender.view.center.y + point.y);
-//    [sender setTranslation:CGPointMake(0, 0) inView:self];
-    [self setCenter:point];
-}
-
 - (void)initStickController {
-    minSizeWidth = (self.frame.size.width>self.frame.size.height)?self.frame.size.width-MoveBtnR:self.frame.size.height-MoveBtnR;
-    sCenter = CGPointMake(minSizeWidth/2, minSizeWidth/2);
+    sCenter = CGPointMake(self.frame.size.width/2, self.frame.size.width/2);
     
-    stickCenter = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, minSizeWidth, minSizeWidth)];
+    stickCenter = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.width)];
     [stickCenter setImage:[UIImage imageNamed:@"round_center"]];
     [stickCenter setCenter:sCenter];
     
-    stickBG = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, minSizeWidth, minSizeWidth)];
+    stickBG = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.width)];
     [stickBG setImage:[UIImage imageNamed:@"stick_BG"]];
     [stickBG addSubview:stickCenter];
     
@@ -82,14 +50,15 @@
 
 
 - (void)stickTouched:(NSSet<UITouch *> *)touches {
-
+    if([touches count] != 1)
+        return;
+    
     UITouch *touch = [touches anyObject];
     UIView *view = [touch view];
 
     if(view != self)
-        return ;
+        return;
 
-    self.userInteractionEnabled = NO;
     CGPoint touchPoint = [touch locationInView:view];
     CGPoint disOffset, disToCenter, maxOffset, maxCenter;
     
@@ -97,7 +66,7 @@
     maxCenter.y = maxOffset.y = disToCenter.y = disOffset.y = touchPoint.y - sCenter.y;
 
     double len = sqrt(disToCenter.x*disToCenter.x + disToCenter.y*disToCenter.y);
-    float largestOffset = minSizeWidth/2-(minSizeWidth/2)*RatioOfCenterAndBG;
+    float largestOffset = self.frame.size.width/2-(self.frame.size.width/2)*RatioOfCenterAndBG;
 
     if(len < 0.1 && len > -0.10) {
         //  If the |len| is smaller than 1, the stick is considered not moved.
@@ -139,28 +108,16 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    NSLog(@"1");
     [self stickTouched:touches];
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    NSLog(@"2");
     [self stickTouched:touches];
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    NSLog(@"3");
     [self stickMoved:CGPointMake(0, 0)];
 }
 
-
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

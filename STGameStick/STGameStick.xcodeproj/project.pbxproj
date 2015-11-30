@@ -14,6 +14,7 @@
 		8B2E97331C0B47900072328D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B2E97321C0B47900072328D /* Assets.xcassets */; };
 		8B2E97361C0B47900072328D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B2E97341C0B47900072328D /* LaunchScreen.storyboard */; };
 		8B2E973F1C0B47CF0072328D /* STGameStick.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2E973E1C0B47CF0072328D /* STGameStick.m */; };
+		8BE200961C0C947000D62CC1 /* STGameStickController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE200951C0C947000D62CC1 /* STGameStickController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		8B2E97371C0B47900072328D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B2E973D1C0B47CF0072328D /* STGameStick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STGameStick.h; path = STGameStick/STGameStick.h; sourceTree = "<group>"; };
 		8B2E973E1C0B47CF0072328D /* STGameStick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STGameStick.m; path = STGameStick/STGameStick.m; sourceTree = "<group>"; };
+		8BE200941C0C947000D62CC1 /* STGameStickController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STGameStickController.h; path = STGameStick/STGameStickController.h; sourceTree = "<group>"; };
+		8BE200951C0C947000D62CC1 /* STGameStickController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STGameStickController.m; path = STGameStick/STGameStickController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,10 +64,9 @@
 		8B2E97251C0B47900072328D /* STGameStick */ = {
 			isa = PBXGroup;
 			children = (
+				8BE200931C0C932700D62CC1 /* STGameStick */,
 				8B2E97291C0B47900072328D /* AppDelegate.h */,
 				8B2E972A1C0B47900072328D /* AppDelegate.m */,
-				8B2E973D1C0B47CF0072328D /* STGameStick.h */,
-				8B2E973E1C0B47CF0072328D /* STGameStick.m */,
 				8B2E972C1C0B47900072328D /* ViewController.h */,
 				8B2E972D1C0B47900072328D /* ViewController.m */,
 				8B2E972F1C0B47900072328D /* Main.storyboard */,
@@ -82,6 +84,17 @@
 				8B2E97271C0B47900072328D /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8BE200931C0C932700D62CC1 /* STGameStick */ = {
+			isa = PBXGroup;
+			children = (
+				8B2E973D1C0B47CF0072328D /* STGameStick.h */,
+				8B2E973E1C0B47CF0072328D /* STGameStick.m */,
+				8BE200941C0C947000D62CC1 /* STGameStickController.h */,
+				8BE200951C0C947000D62CC1 /* STGameStickController.m */,
+			);
+			name = STGameStick;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +171,7 @@
 				8B2E972B1C0B47900072328D /* AppDelegate.m in Sources */,
 				8B2E97281C0B47900072328D /* main.m in Sources */,
 				8B2E973F1C0B47CF0072328D /* STGameStick.m in Sources */,
+				8BE200961C0C947000D62CC1 /* STGameStickController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +320,7 @@
 				8B2E973C1C0B47900072328D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
