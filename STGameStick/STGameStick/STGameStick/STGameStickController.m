@@ -43,8 +43,8 @@
     moveBtn = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width-MoveBtnR*2, self.frame.size.height-MoveBtnR*2, MoveBtnR*2, MoveBtnR*2)];
     [moveBtn setImage:[UIImage imageNamed:@"close"]];
     
-    longPressGes = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(moveStickPressedView:)];
-    longPressGes.minimumPressDuration = 2.f;
+    longPressGes = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(enableMoveStickView:)];
+    longPressGes.minimumPressDuration = 1.f;
     longPressGes.numberOfTouchesRequired = 1;
     [moveBtn addGestureRecognizer:longPressGes];
     moveBtn.userInteractionEnabled = YES;
@@ -61,7 +61,7 @@
  *
  *  @param sender Long press gesture.
  */
-- (void)moveStickPressedView:(UILongPressGestureRecognizer *)sender {
+- (void)enableMoveStickView:(UILongPressGestureRecognizer *)sender {
     switch ([sender state]) {
         case UIGestureRecognizerStateBegan: {
             //  Shake Animation Called.

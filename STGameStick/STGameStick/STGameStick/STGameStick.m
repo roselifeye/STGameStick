@@ -88,7 +88,7 @@
         disOffset.y = -(disToCenter.y)/largestOffset;
     }
     
-    [self stickMoved:disToCenter];
+    [self stickMoveTo:disToCenter];
     
     if ([self.delegate respondsToSelector:@selector(stickDidMoved:withMovedCoodinate:)]) {
         [self.delegate stickDidMoved:self withMovedCoodinate:disOffset];
@@ -100,7 +100,7 @@
  *
  *  @param offSetToCenter The distance to the Center of the ImageView.
  */
-- (void)stickMoved:(CGPoint)offSetToCenter {
+- (void)stickMoveTo:(CGPoint)offSetToCenter {
     CGRect fr = stickCenter.frame;
     fr.origin.x = offSetToCenter.x;
     fr.origin.y = offSetToCenter.y;
@@ -116,7 +116,13 @@
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self stickMoved:CGPointMake(0, 0)];
+    [self stickMoveTo:CGPointMake(0, 0)];
+//    [UIView animateWithDuration:.1f animations:^{
+//        
+//    }];
+    if ([self.delegate respondsToSelector:@selector(stickDidMoved:withMovedCoodinate:)]) {
+        [self.delegate stickDidMoved:self withMovedCoodinate:CGPointMake(0, 0)];
+    }
 }
 
 
