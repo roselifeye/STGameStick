@@ -97,12 +97,15 @@
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     [animation setDuration:0.08];
     
-    animation.fromValue = @(-M_1_PI/2);
-    animation.toValue = @(M_1_PI/2);
+    //  For this old frame, I will write a blog to illustrate it.
+    CGRect oldFrame = view.frame;
+    animation.fromValue = @(-M_1_PI/3);
+    animation.toValue = @(M_1_PI/3);
     animation.repeatCount = HUGE_VAL;
     animation.autoreverses = YES;
-    view.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    view.layer.anchorPoint = CGPointMake(1, 1);
     [view.layer addAnimation:animation forKey:@"rotation"];
+    view.frame = oldFrame;
 }
 
 /**
